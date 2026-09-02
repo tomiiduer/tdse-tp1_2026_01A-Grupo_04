@@ -1,2 +1,7 @@
-# tdse-tp1_2026_01A-Grupo_04
-# FIUBA - Electrónica - Taller de Sistemas Embebidos - Trabajo Práctico N°: 1 - Diagramas de Estado - Modelado
+# FIUBA - Electrónica - Taller de Sistemas Embebidos
+## Trabajo Práctico N°: 1 - Diagramas de Estado - Modelado
+### 2026- 2do Cuatrimestre - 01A-Grupo 04
+### Responsable de la entrega:
+| Padrón | Apellidos, Nombres | Fecha | Deadline |
+| 112612 | Duer, Tomas Cesar |        |          |
+| XXXXXX | Cardenas, Joaquin | | Semana 04 |
