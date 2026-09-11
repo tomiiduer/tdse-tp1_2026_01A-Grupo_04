@@ -21,16 +21,16 @@ Modelamos el sensor con un pulsador.
 
 ### Sensor Statechart - State Transition Table
 
-| Current State  | Event           | [Guard]        | Next State     | Actions               |
-| -------------- | --------------- | -------------- | -------------- | --------------------- |
-| ST_BTN_OFF     | EV_BTN_PRESSED  |                | ST_BTN_FALLING | timer=0               |
-| ST_BTN_FALLING | EV_BTN_RELEASED |                | ST_BTN_OFF     | timer=0               |
-| ST_BTN_FALLING | EV_BTN_PRESSED  | tick           | EV_BTN_PRESSED | timer++               |
-| ST_BTN_FALLING | tick            | timer>=DEL_BTN | ST_BTN__ON     | timer=0<br>EV_SYS_ON  |
-| ST_BTN_ON      | EV_BTN_RELEASED |                | ST_BTN_RISING  | timer=0               |
-| ST_BTN_RISING  | EV_BTN_PRESSED  |                | ST_BTN_ON      | timer=0               |
-| ST_BTN_RISING  | EV_BTN_RELEASED | tick           | ST_BTN_RISING  | timer++               |
-| ST_BTN_RISING  | tick            | timer>=DEL_BTN | ST_BTN_OFF     | timer=0<br>EV_SYS_OFF |
+| Current State  | Event           | [Guard]              | Next State     | Actions                |
+| -------------- | --------------- | -------------------- | -------------- | ---------------------- |
+| ST_BTN_OFF     | EV_BTN_PRESSED  |                      | ST_BTN_FALLING | timer = 0              |
+| ST_BTN_FALLING | tick            | timer - DEL_BTN == 0 | ST_BTN_ON      | EV_SYS_ON<br>timer = 0 |
+| ST_BTN_FALLING | tick            |                      | ST_BTN_FALLING | timer++                |
+| ST_BTN_FALLING | EV_BTN_RELEASED |                      | ST_BTN_OFF     |                        |
+| ST_BTN_ON      | EV_BTN_RELEASED |                      | ST_BTN_RISING  | timer = 0              |
+| ST_BTN_RISING  | tick            | timer - DEL_BTN == 0 | ST_BTN_OFF     | EV_SYS_OFF<br>timer = 0|
+| ST_BTN_RISING  | tick            |                      | ST_BTN_RISING  | timer++                |
+| ST_BTN_RISING  | EV_BTN_PRESSED  |                      | ST_BTN_ON      |                        |
 
 Existe cierta redundancia en igualar timer a 0 en algunos cambios de estado pero consideramos que es mejor que exista esa redundancia para asegurar el correcto funcionamiento del modelo.
 
